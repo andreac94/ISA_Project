@@ -1,0 +1,2 @@
+# Exclude the pdf files since the polito server has limited space 
+*.pdf
