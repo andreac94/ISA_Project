@@ -11,9 +11,9 @@ entity right_shifter is
     port(
         A:      in  std_logic_vector(nbit-1 downto 0);
         shift:  in  std_logic_vector(shift_bits-1 downto 0);
-        Z:      out std_logic_vector(nbit-1 downto 0);
+        Z:      out std_logic_vector(nbit-1 downto 0)
     );
-end component right_shifter;
+end entity right_shifter;
 
 -- Totally not optimized, but it should work
 architecture behavioural of right_shifter is
@@ -32,5 +32,5 @@ architecture behavioural of right_shifter is
 begin
     flush_to_zero   <=  group_or(shift(shift'high downto needed_shift_bits));
     Z   <=  (others => '0') when flush_to_zero = '1' else
-            std_logic_vector(unsigned(A) srl unsigned(shift(needed_shift_bits-1 downto 0)));
+            std_logic_vector(shift_right(unsigned(A), to_integer(unsigned(shift(needed_shift_bits-1 downto 0)))));
 end architecture behavioural;

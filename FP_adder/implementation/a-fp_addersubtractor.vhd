@@ -1,19 +1,17 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
-use IEE.numeric_std.all;
+use IEEE.numeric_std.all;
 library WORK;
 use WORK.integer_array.all;
 
 entity FP_AdderSubtractor is
     generic(
-        pipeline_depth: natural:=   0
+        nbit:   natural:=   32
     );
     port(
-        clk:    in  std_logic
-        rst:    in  std_logic
-        A:      in  std_logic_vector(nbit-1 downto 0)
-        B:      in  std_logic_vector(nbit-1 downto 0)
-        sub:    in  std_logic
+        A:      in  std_logic_vector(nbit-1 downto 0);
+        B:      in  std_logic_vector(nbit-1 downto 0);
+        sub:    in  std_logic;
         S:      out std_logic_vector(nbit-1 downto 0)
     );
 end entity FP_AdderSubtractor;
@@ -27,8 +25,8 @@ architecture structural_single of FP_AdderSubtractor is
         port(
             A:          in  std_logic_vector(nbit-1 downto 0);  -- exponent of A
             B:          in  std_logic_vector(nbit-1 downto 0);  -- exponent of B
-            A_gt_B:     in  std_logic;  -- '1' if exponent of A is greater, '0' otherwise
-            diff:       out std_logic_vector(nbit-1 downto 0);  -- abs(A-B)
+            A_gt_B:     out std_logic;  -- '1' if exponent of A is greater, '0' otherwise
+            diff:       out std_logic_vector(nbit-1 downto 0)   -- abs(A-B)
         );
     end component exponent_comparator;
 
@@ -276,10 +274,10 @@ begin
             shift_bits  =>  5
         )
         port map(
-            A       S1,
-            ovf     ovf,
-            shift   leading_zeroes,
-            Z       man_S
+            A       =>  S1,
+            ovf     =>  ovf,
+            shift   =>  leading_zeroes,
+            Z       =>  man_S
         );
     
     -- SIGN CHAIN

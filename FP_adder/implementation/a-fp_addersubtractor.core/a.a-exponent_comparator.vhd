@@ -9,10 +9,10 @@ entity exponent_comparator is
     port(
         A:      in  std_logic_vector(nbit-1 downto 0);  -- exponent of A
         B:      in  std_logic_vector(nbit-1 downto 0);  -- exponent of B
-        A_gt_B: in  std_logic;  -- '1' if exponent of A is greater, '0' otherwise
+        A_gt_B: out std_logic;  -- '1' if exponent of A is greater, '0' otherwise
         diff:   out std_logic_vector(nbit-1 downto 0)   -- abs(A-B)
     );
-end component exponent_comparator;
+end entity exponent_comparator;
 
 -- This probably sucks, but hey it should work
 architecture behavioural of exponent_comparator is
@@ -37,11 +37,11 @@ architecture double_adder of exponent_comparator is
     signal  B_minus_A:  signed(nbit downto 0);
 begin
     -- We need signed values to detect sign and thus add a bit (bad beast overflow avoided)
-    A_minus_B   <=  signed('0'&A)-signed('0'&B)
-    B_minus_A   <=  signed('0'&B)-signed('0'&A)
+    A_minus_B   <=  signed('0'&A)-signed('0'&B);
+    B_minus_A   <=  signed('0'&B)-signed('0'&A);
     -- A is greater than B if B-A is negative
-    A_gt_B_int  <=  B_minus_A(B_minus_A'high)
-    A_gt_B      <=  A_gt_B_int
-    diff        <=  A_minus_B when A_gt_B_int = '1' else
-                    B_minus_A;
+    A_gt_B_int  <=  B_minus_A(B_minus_A'high);
+    A_gt_B      <=  A_gt_B_int;
+    diff        <=  std_logic_vector(A_minus_B) when A_gt_B_int = '1' else
+                    std_logic_vector(B_minus_A);
 end architecture double_adder;

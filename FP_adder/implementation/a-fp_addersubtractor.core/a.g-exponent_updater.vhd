@@ -18,5 +18,5 @@ end entity exponent_updater;
 architecture behavioural of exponent_updater is
 begin
     D   <=  std_logic_vector(unsigned(A)+1) when ovf = '1' else
-            std_logic_vector(unsigned(A)-B);
+            std_logic_vector(unsigned(A)-unsigned(B));
 end architecture behavioural;

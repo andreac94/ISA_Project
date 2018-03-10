@@ -15,8 +15,8 @@ entity shifter is
     );
 end entity shifter;
 
-architecture behavioural of shifter is;
+architecture behavioural of shifter is
 begin
     Z   <=  A(nbit-1 downto 1) when ovf = '1' else
-            std_logic_vector(unsigned(A) sll unsigned(shift));
+            std_logic_vector(shift_left(unsigned(A), to_integer(unsigned(shift))));
 end architecture behavioural;

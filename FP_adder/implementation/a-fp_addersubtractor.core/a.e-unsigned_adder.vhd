@@ -24,7 +24,7 @@ end entity unsigned_adder;
 -- Simple behavioural adder/subtractor
 architecture behavioural of unsigned_adder is
 
-    signal  S_int:  signed(nbit-1 downto 0);
+    signal  S_int:  std_logic_vector(nbit-1 downto 0);
     
     function group_nor(X: std_logic_vector) return std_logic is
         variable    Y:  std_logic:= '0';
@@ -33,11 +33,11 @@ architecture behavioural of unsigned_adder is
             Y:= Y or X(i);
         end loop;
         return not Y;
-    end function group_or;
+    end function group_nor;
 
 begin
-    S_int   <=  signed(A)+signed(B) when sub = '0' else
-                signed(A)-signed(B);
+    S_int   <=  std_logic_vector(unsigned(A)+unsigned(B)) when sub = '0' else
+                std_logic_vector(unsigned(A)+unsigned(B)+1);
     S       <=  S_int;
     zero    <=  group_nor(S_int);
     ovf     <=  '1' when sub = '0' and A(A'high) = '1' and B(B'high) = '1' else   -- A>N/2, B>N/2
@@ -63,6 +63,7 @@ architecture RCA of unsigned_adder is
     signal  carry_chain:    std_logic_vector(nbit downto 0);
     signal  B_neg:          std_logic_vector(nbit-1 downto 0);
     signal  Y:              std_logic_vector(nbit-1 downto 0);
+    signal  S_int:          std_logic_vector(nbit-1 downto 0);
 
     function group_nor(X: std_logic_vector) return std_logic is
         variable    Y:  std_logic:= '0';
@@ -71,7 +72,7 @@ architecture RCA of unsigned_adder is
             Y:= Y or X(i);
         end loop;
         return not Y;
-    end function group_or;
+    end function group_nor;
     
 begin
     -- Needed for the generate statement
@@ -117,6 +118,7 @@ architecture CSA of unsigned_adder is
     
     signal  B_neg:          std_logic_vector(nbit-1 downto 0);
     signal  Y:              std_logic_vector(nbit-1 downto 0);
+    signal  S_int:          std_logic_vector(nbit-1 downto 0);
 
     function group_nor(X: std_logic_vector) return std_logic is
         variable    Y:  std_logic:= '0';
@@ -125,7 +127,7 @@ architecture CSA of unsigned_adder is
             Y:= Y or X(i);
         end loop;
         return not Y;
-    end function group_or;
+    end function group_nor;
 
 begin
     -- We need a negation for subtraction
@@ -135,9 +137,10 @@ begin
 
     gen_adder: for i in 0 to CSA_groups-1 generate
         signal  selector_chain:    std_logic_vector(CSA_groups downto 1);
-    
+    begin
         first_group: if i = 0 generate
             signal  carry_chain:    std_logic_vector(group_taps(i) downto 0);
+        begin
             carry_chain(0)  <=  sub;
             
             gen_first_group: for j in 0 to group_taps(i)-1 generate
@@ -145,8 +148,8 @@ begin
                     port map(
                         A   =>  A(j),
                         B   =>  Y(j),
-                        Ci  =>  carry_chain(j)
-                        S   =>  S_int(j)
+                        Ci  =>  carry_chain(j),
+                        S   =>  S_int(j),
                         Co  =>  carry_chain(j+1)
                     );
             end generate gen_first_group;
@@ -157,27 +160,28 @@ begin
         other_groups: if i /= 0 generate
             signal  carry_chain_1:    std_logic_vector(group_taps(i) downto group_taps(i-1));
             signal  carry_chain_2:    std_logic_vector(group_taps(i) downto group_taps(i-1));
-            carry_chain_1(carry_chain_1'low)    <=  '0';
-            carry_chain_2(carry_chain_2'low)    <=  '1';
             
             signal  S1: std_logic_vector(group_taps(i) downto group_taps(i-1));
             signal  S2: std_logic_vector(group_taps(i) downto group_taps(i-1));
+        begin
+            carry_chain_1(carry_chain_1'low)    <=  '0';
+            carry_chain_2(carry_chain_2'low)    <=  '1';
             
             gen_other_groups: for j in group_taps(i-1) to group_taps(i)-1 generate
                 FA1: FullAdder
                     port map(
                         A   =>  A(j),
                         B   =>  Y(j),
-                        Ci  =>  carry_chain_1(j)
-                        S   =>  S1(j)
+                        Ci  =>  carry_chain_1(j),
+                        S   =>  S1(j),
                         Co  =>  carry_chain_1(j+1)
                     );
                 FA2: FullAdder
                     port map(
                         A   =>  A(j),
                         B   =>  Y(j),
-                        Ci  =>  carry_chain_2(j)
-                        S   =>  S2(j)
+                        Ci  =>  carry_chain_2(j),
+                        S   =>  S2(j),
                         Co  =>  carry_chain_2(j+1)
                     );
             end generate gen_other_groups;
