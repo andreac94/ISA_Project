@@ -20,6 +20,7 @@ architecture behavioural of right_shifter is
     -- When the shift uses more than the needed bits the result is zero,
     -- letting us use a smaller shifter
     signal  flush_to_zero:  std_logic;
+    signal  extra_bits:     std_logic_vector(shift_bits-needed_shift_bits-1 downto 0);
     
     function group_or(X: std_logic_vector) return std_logic is
         variable    Y:  std_logic:= '0';
@@ -30,7 +31,8 @@ architecture behavioural of right_shifter is
         return Y;
     end function group_or;
 begin
-    flush_to_zero   <=  group_or(shift(shift'high downto needed_shift_bits));
-    Z   <=  (others => '0') when flush_to_zero = '1' else
-            std_logic_vector(shift_right(unsigned(A), to_integer(unsigned(shift(needed_shift_bits-1 downto 0)))));
+    extra_bits      <=  shift(shift'high downto needed_shift_bits);
+    flush_to_zero   <=  group_or(extra_bits);
+    Z               <=  (others => '0') when flush_to_zero = '1' else
+                        std_logic_vector(shift_right(unsigned(A), to_integer(unsigned(shift(needed_shift_bits-1 downto 0)))));
 end architecture behavioural;

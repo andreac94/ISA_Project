@@ -13,3 +13,6 @@ vcom $vcom_path/a.e-unsigned_adder.vhd
 vcom $vcom_path/a.f-normalizer_logic.vhd
 vcom $vcom_path/a.g-exponent_updater.vhd
 vcom $vcom_path/a.h-shifter.vhd
+vcom $vcom_path/a.i-sign_unit.vhd
+vcom $vcom_path/a.j-special_case_unit.vhd
+

@@ -49,8 +49,7 @@ architecture structural_single of FP_AdderSubtractor is
             sign_A:         in  std_logic;
             sign_B:         in  std_logic;
             expA_gt_expB:   in  std_logic;
-            eop:            out std_logic;
-            invert:         out std_logic
+            eop:            out std_logic
         );
     end component effective_operation;
     
@@ -84,11 +83,13 @@ architecture structural_single of FP_AdderSubtractor is
     component normalizer_logic is
         generic(
             nbit:       natural:=   24; -- single mantissa 23 + hidden bit
+            exp_bits:   natural:=   8;  -- single exponent 8
             shift_bits: natural:=   5   -- ceil(log2(nbit))
         );
         port(
-            A:  in  std_logic_vector(nbit-1 downto 0);
-            lz: out std_logic_vector(shift_bits-1 downto 0)
+            A:      in  std_logic_vector(nbit-1 downto 0);
+            exp_S1: in  std_logic_vector(exp_bits-1 downto 0);
+            lz:     out std_logic_vector(shift_bits-1 downto 0)
         );
     end component normalizer_logic;
     
@@ -101,7 +102,8 @@ architecture structural_single of FP_AdderSubtractor is
             A:      in  std_logic_vector(nbit-1 downto 0);
             B:      in  std_logic_vector(shift_bits-1 downto 0);
             ovf:    in  std_logic;
-            D:      out std_logic_vector(nbit-1 downto 0)
+            D:      out std_logic_vector(nbit-1 downto 0);
+            to_inf: out std_logic
         );
     end component exponent_updater;
     
@@ -117,6 +119,32 @@ architecture structural_single of FP_AdderSubtractor is
             Z:      out std_logic_vector(nbit-2 downto 0)
         );
     end component shifter;
+    
+    component sign_unit is
+        port(
+            expA_gt_expB:   in  std_logic;
+            sub:            in  std_logic;
+            sign_A:         in  std_logic;
+            sign_B:         in  std_logic;
+            X1_gt_Y:        in  std_logic;
+            sign_S:         out std_logic
+        );
+    end component sign_unit;
+    
+    component special_case_unit is
+        generic(
+            nbit:       natural:=   32;
+            exp_bits:   natural:=   8;
+            man_bits:   natural:=   23
+        );
+        port(
+            A:      in  std_logic_vector(nbit-1 downto 0);
+            B:      in  std_logic_vector(nbit-1 downto 0);
+            sub:    in  std_logic;
+            is_inf: out std_logic;
+            is_nan: out std_logic
+        );
+    end component special_case_unit;
     
     -- GENERAL
     -- unpack bits
@@ -138,8 +166,9 @@ architecture structural_single of FP_AdderSubtractor is
     
     -- MANTISSA CHAIN
     -- rearrange and extend mantissas
-    signal  X:  std_logic_vector(23 downto 0);
-    signal  Y:  std_logic_vector(23 downto 0);
+    constant    den_exp:    std_logic_vector(7 downto 0):=  (others=>'0');
+    signal      X:          std_logic_vector(23 downto 0);
+    signal      Y:          std_logic_vector(23 downto 0);
     -- align
     signal  X1: std_logic_vector(23 downto 0);
     -- effective operation
@@ -153,6 +182,7 @@ architecture structural_single of FP_AdderSubtractor is
     signal  ovf:            std_logic;
     signal  zero:           std_logic;
     signal  S1:             std_logic_vector(23 downto 0);
+    signal  S2:             std_logic_vector(23 downto 0);
     signal  leading_zeroes: std_logic_vector(4 downto 0);
     signal  man_S:          std_logic_vector(22 downto 0);
     
@@ -161,9 +191,17 @@ architecture structural_single of FP_AdderSubtractor is
     signal  sign_X: std_logic;
     signal  sign_Y: std_logic;
     -- sum sign
-    signal  invert:     std_logic;
-    signal  sign_S1:    std_logic;
     signal  sign_S:     std_logic;
+    
+    -- SPECIAL CASES
+    signal  always_inf: std_logic;
+    signal  is_nan:     std_logic;
+    signal  ovf_to_inf: std_logic;
+    signal  is_inf:     std_logic;
+    
+    -- special values
+    constant    inf:    std_logic_vector(31 downto 0):= (30 downto 23=>'1', others=>'0');
+    constant    nan:    std_logic_vector(31 downto 0):= (30 downto 22=>'1', others=>'0');
     
 begin
 
@@ -188,26 +226,31 @@ begin
             diff    =>  exp_diff
         );
     -- Tentative exponent
-    exp_S1  <=  exp_A when expA_gt_expB = '0' else
-                exp_B;
+    exp_S1  <=  exp_B when expA_gt_expB = '0' else
+                exp_A;
     -- Correct exponent
     EU: exponent_updater
         generic map(
             nbit    =>  8
         )
         port map(
-            A   =>  exp_S1,
-            B   =>  leading_zeroes,
-            ovf =>  ovf,
-            D   =>  exp_S
+            A       =>  exp_S1,
+            B       =>  leading_zeroes,
+            ovf     =>  ovf,
+            D       =>  exp_S,
+            to_inf  =>  ovf_to_inf
         );
     
     -- MANTISSA CHAIN
     -- rearrange and extend mantissas
-    X   <=  '1'&man_B when expA_gt_expB = '0' else
-            '1'&man_A;
-    Y   <=  '1'&man_A when expA_gt_expB = '0' else
-            '1'&man_B;
+    X   <=  '1'&man_A when (expA_gt_expB = '0') and (exp_A /= den_exp) else
+            '0'&man_A when (expA_gt_expB = '0') and (exp_A = den_exp) else
+            '1'&man_B when (expA_gt_expB = '1') and (exp_B /= den_exp) else
+            '0'&man_B;
+    Y   <=  '1'&man_B when expA_gt_expB = '0' and exp_B /= den_exp else
+            '0'&man_B when expA_gt_expB = '0' and exp_B = den_exp else
+            '1'&man_A when expA_gt_expB = '1' and exp_A /= den_exp else
+            '0'&man_A;
     -- align
     RS: right_shifter
         generic map(
@@ -227,11 +270,10 @@ begin
             sign_A          =>  sign_A,
             sign_B          =>  sign_B,
             expA_gt_expB    =>  expA_gt_expB,
-            eop             =>  eop,
-            invert          =>  invert
+            eop             =>  eop
         );
     -- subtraction wizardry
-    Y1      <=  Y when sub = '0' else
+    Y1      <=  Y when eop = '0' else
             not(Y);
     CM: unsigned_comparator
         generic map(
@@ -259,14 +301,18 @@ begin
             ovf     =>  ovf,
             zero    =>  zero
         );
+    S2  <=  S1 when gamma = '0' else
+            not(S1);
     NL: normalizer_logic
         generic map(
             nbit        =>  24,
+            exp_bits    =>  8,
             shift_bits  =>  5
         )
         port map(
-            A   =>  S1,
-            lz  =>  leading_zeroes
+            A       =>  S2,
+            exp_S1  =>  exp_S1,
+            lz      =>  leading_zeroes
         );
     SH: shifter
         generic map(
@@ -274,7 +320,7 @@ begin
             shift_bits  =>  5
         )
         port map(
-            A       =>  S1,
+            A       =>  S2,
             ovf     =>  ovf,
             shift   =>  leading_zeroes,
             Z       =>  man_S
@@ -282,19 +328,47 @@ begin
     
     -- SIGN CHAIN
     -- rearrange signs
-    sign_X  <=  sign_B when expA_gt_expB = '0' else
-                sign_A;
-    sign_Y  <=  sign_A when expA_gt_expB = '0' else
+    sign_X  <=  sign_A when expA_gt_expB = '0' else
                 sign_B;
+    sign_Y  <=  sign_B when expA_gt_expB = '0' else
+                sign_A;
     -- sum sign
-    sign_S1 <=  sign_X when (X1_gt_Y = '1') else
-                sign_X when (sign_X = sign_Y) and eop = '0' else
-                sign_X when (sign_X /= sign_Y) and eop = '1' else
-                not(sign_X);
-    sign_S  <=  sign_S1 when invert = '0' else
-                not(sign_S1);
+    SU: sign_unit
+        port map(
+            expA_gt_expB    =>  expA_gt_expB,
+            sub             =>  sub,
+            sign_A          =>  sign_A,
+            sign_B          =>  sign_B,
+            X1_gt_Y         =>  X1_gt_Y,
+            sign_S          =>  sign_S
+        );
     
-    -- pack bits
-    S   <=  sign_S & exp_S & man_S;
+    -- SPECIAL CASES
+    SCU: special_case_unit
+        generic map(
+            nbit        =>  32,
+            exp_bits    =>  8,
+            man_bits    =>  23
+        )
+        port map(
+            A       =>  A,
+            B       =>  B,
+            sub     =>  sub,
+            is_inf  =>  always_inf,
+            is_nan  =>  is_nan
+        );
+    is_inf  <=  always_inf or ovf_to_inf;
+    -- select correct output and pack bits
+    S   <=  sign_S & exp_S & man_S when is_inf = '0' and is_nan = '0' else
+            sign_S & inf(30 downto 0) when is_inf = '1' and is_nan = '0' else
+            nan;
 
 end architecture structural_single;
+
+configuration cfg_fpas of FP_AdderSubtractor is
+    for structural_single
+        for UA: unsigned_adder
+            use configuration work.cfg_ua;
+        end for;
+    end for;
+end configuration cfg_fpas;

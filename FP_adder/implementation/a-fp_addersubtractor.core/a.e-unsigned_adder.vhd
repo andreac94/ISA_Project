@@ -200,3 +200,8 @@ begin
                 '0';
     zero    <=  group_nor(S_int);
 end architecture CSA;
+
+configuration cfg_ua of unsigned_adder is
+    for behavioural
+    end for;
+end configuration cfg_ua;

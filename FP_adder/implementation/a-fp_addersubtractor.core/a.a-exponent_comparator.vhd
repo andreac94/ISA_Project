@@ -42,6 +42,6 @@ begin
     -- A is greater than B if B-A is negative
     A_gt_B_int  <=  B_minus_A(B_minus_A'high);
     A_gt_B      <=  A_gt_B_int;
-    diff        <=  std_logic_vector(A_minus_B) when A_gt_B_int = '1' else
-                    std_logic_vector(B_minus_A);
+    diff        <=  std_logic_vector(A_minus_B(7 downto 0)) when A_gt_B_int = '1' else
+                    std_logic_vector(B_minus_A(7 downto 0));
 end architecture double_adder;
