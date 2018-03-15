@@ -1,0 +1,24 @@
+ 
+****************************************
+Report : area
+Design : FP32_MUL
+Version: Z-2007.03-SP1
+Date   : Thu Mar 15 18:47:38 2018
+****************************************
+
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /software/dk/nangate45/synopsys/NangateOpenCellLibrary_typical_ecsm.db)
+
+Number of ports:               97
+Number of nets:               273
+Number of cells:              130
+Number of references:          15
+
+Combinational area:       4434.219958
+Noncombinational area:       0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:          4434.219727
+Total area:                 undefined
+1

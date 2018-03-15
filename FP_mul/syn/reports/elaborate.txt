@@ -1,0 +1,27 @@
+Loading db file '/software/synopsys/syn_current/libraries/syn/gtech.db'
+Loading db file '/software/synopsys/syn_current/libraries/syn/standard.sldb'
+  Loading link library 'NangateOpenCellLibrary'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'FP32_MUL'.
+Information: Building the design 'EXP_MANAGER_UNIT' instantiated from design 'FP32_MUL' with
+	the parameters "N=8". (HDL-193)
+Warning:  ./exp_manager_unit.vhd:26: the direction (to or downto) does not agree with the values first and last in the range.  (ELAB-935)
+Warning:  ./exp_manager_unit.vhd:26: the direction (to or downto) does not agree with the values first and last in the range.  (ELAB-935)
+Presto compilation completed successfully.
+Information: Building the design 'DADDA_24'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'ROUNDING_AND_OVF_UNIT' instantiated from design 'FP32_MUL' with
+	the parameters "N=24,mode=1'h1". (HDL-193)
+Warning:  ./rounding_and_ovf_unit.vhd:57: the direction (to or downto) does not agree with the values first and last in the range.  (ELAB-935)
+Presto compilation completed successfully.
+Information: Building the design 'HA'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'FA'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'RSH_NORMALIZER' instantiated from design 'ROUNDING_AND_OVF_UNIT_24_1' with
+	the parameters "N=48". (HDL-193)
+Presto compilation completed successfully.
+1
