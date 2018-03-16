@@ -20,6 +20,7 @@ def main(argv):
 	
     ##### Handle arguments
     if len(argv) > 1:
+        for arg in argv:
             if arg.lower() == "-verbose":
                 verbose = True
 
