@@ -39,3 +39,9 @@ compile
 ### REPORTS
 report_timing > "$REPORTS/timing.txt"
 report_area > "$REPORTS/area.txt"
+
+### ULTRA
+compile_ultra
+
+report_timing > "$REPORTS/timing_ultra.txt"
+report_area > "$REPORTS/area_ultra.txt"

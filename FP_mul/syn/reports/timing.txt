@@ -6,13 +6,13 @@ Report : timing
         -max_paths 1
 Design : FP32_MUL
 Version: Z-2007.03-SP1
-Date   : Thu Mar 15 18:47:38 2018
+Date   : Fri Mar 16 20:31:58 2018
 ****************************************
 
 Operating Conditions: typical   Library: NangateOpenCellLibrary
 Wire Load Model Mode: top
 
-  Startpoint: B[2] (input port)
+  Startpoint: B[6] (input port)
   Endpoint: O[6] (output port)
   Path Group: default
   Path Type: max
@@ -24,73 +24,63 @@ Wire Load Model Mode: top
   Point                                                   Incr       Path
   --------------------------------------------------------------------------
   input external delay                                    0.00       0.00 f
-  B[2] (in)                                               0.00       0.00 f
-  DADDA/M2[2] (DADDA_24)                                  0.00       0.00 f
-  DADDA/U295/ZN (AND2_X1)                                 0.06       0.06 f
-  DADDA/FA_7/C_in (FA_480)                                0.00       0.06 f
-  DADDA/FA_7/U6/S (FA_X1)                                 0.16       0.22 r
-  DADDA/FA_7/S (FA_480)                                   0.00       0.22 r
-  DADDA/FA_75/A (FA_421)                                  0.00       0.22 r
-  DADDA/FA_75/U4/ZN (XNOR2_X1)                            0.07       0.28 r
-  DADDA/FA_75/U2/ZN (OAI21_X1)                            0.03       0.32 f
-  DADDA/FA_75/C_out (FA_421)                              0.00       0.32 f
-  DADDA/FA_183/B (FA_317)                                 0.00       0.32 f
-  DADDA/FA_183/U4/ZN (XNOR2_X1)                           0.06       0.38 f
-  DADDA/FA_183/U2/ZN (OAI21_X1)                           0.06       0.43 r
-  DADDA/FA_183/C_out (FA_317)                             0.00       0.43 r
-  DADDA/FA_293/B (FA_210)                                 0.00       0.43 r
-  DADDA/FA_293/U4/ZN (XNOR2_X1)                           0.07       0.50 r
-  DADDA/FA_293/U2/ZN (XNOR2_X1)                           0.07       0.57 r
-  DADDA/FA_293/S (FA_210)                                 0.00       0.57 r
-  DADDA/FA_383/B (FA_122)                                 0.00       0.57 r
-  DADDA/FA_383/U4/ZN (XNOR2_X1)                           0.07       0.64 r
-  DADDA/FA_383/U2/ZN (XNOR2_X1)                           0.07       0.70 r
-  DADDA/FA_383/S (FA_122)                                 0.00       0.70 r
-  DADDA/FA_485/A (FA_22)                                  0.00       0.70 r
-  DADDA/FA_485/U7/ZN (INV_X1)                             0.03       0.73 f
-  DADDA/FA_485/U8/ZN (XNOR2_X1)                           0.06       0.79 f
-  DADDA/FA_485/U3/Z (XOR2_X1)                             0.07       0.86 f
-  DADDA/FA_485/S (FA_22)                                  0.00       0.86 f
-  DADDA/add_1162/B[23] (DADDA_24_DW01_add_1)              0.00       0.86 f
-  DADDA/add_1162/U371/ZN (NOR2_X1)                        0.05       0.91 r
-  DADDA/add_1162/U545/ZN (NOR2_X1)                        0.03       0.94 f
-  DADDA/add_1162/U326/ZN (AND2_X1)                        0.04       0.98 f
-  DADDA/add_1162/U325/ZN (NAND2_X1)                       0.04       1.01 r
-  DADDA/add_1162/U375/ZN (NAND2_X1)                       0.03       1.05 f
-  DADDA/add_1162/U361/Z (BUF_X1)                          0.04       1.09 f
-  DADDA/add_1162/U567/ZN (AOI21_X1)                       0.04       1.13 r
-  DADDA/add_1162/U481/ZN (XNOR2_X1)                       0.06       1.19 r
-  DADDA/add_1162/SUM[28] (DADDA_24_DW01_add_1)            0.00       1.19 r
-  DADDA/PROD[29] (DADDA_24)                               0.00       1.19 r
-  ROUND/I[29] (ROUNDING_AND_OVF_UNIT_24_1)                0.00       1.19 r
-  ROUND/RSH0/I[29] (RSH_NORMALIZER_N48_0)                 0.00       1.19 r
-  ROUND/RSH0/U46/Z (MUX2_X1)                              0.05       1.24 r
-  ROUND/RSH0/O[28] (RSH_NORMALIZER_N48_0)                 0.00       1.24 r
-  ROUND/add_57/A[28] (ROUNDING_AND_OVF_UNIT_24_1_DW01_add_0)
-                                                          0.00       1.24 r
-  ROUND/add_57/U295/ZN (NAND2_X1)                         0.03       1.27 f
-  ROUND/add_57/U182/Z (BUF_X1)                            0.04       1.31 f
-  ROUND/add_57/U190/ZN (NOR2_X1)                          0.04       1.35 r
-  ROUND/add_57/U225/ZN (NAND2_X1)                         0.03       1.38 f
-  ROUND/add_57/U224/ZN (XNOR2_X1)                         0.06       1.43 f
-  ROUND/add_57/SUM[29] (ROUNDING_AND_OVF_UNIT_24_1_DW01_add_0)
-                                                          0.00       1.43 f
-  ROUND/RSH1/I[29] (RSH_NORMALIZER_N48_1)                 0.00       1.43 f
-  ROUND/RSH1/U12/Z (MUX2_X1)                              0.07       1.50 f
-  ROUND/RSH1/O[29] (RSH_NORMALIZER_N48_1)                 0.00       1.50 f
-  ROUND/O[6] (ROUNDING_AND_OVF_UNIT_24_1)                 0.00       1.50 f
-  U124/ZN (AND2_X1)                                       0.04       1.54 f
-  O[6] (out)                                              0.02       1.56 f
-  data arrival time                                                  1.56
+  B[6] (in)                                               0.00       0.00 f
+  DADDA/M2[6] (DADDA_24)                                  0.00       0.00 f
+  DADDA/U33/ZN (AND2_X1)                                  0.06       0.06 f
+  DADDA/FA_13/A (FA_475)                                  0.00       0.06 f
+  DADDA/FA_13/U2/ZN (OAI21_X1)                            0.05       0.11 r
+  DADDA/FA_13/U3/ZN (NAND2_X1)                            0.03       0.14 f
+  DADDA/FA_13/C_out (FA_475)                              0.00       0.14 f
+  DADDA/FA_85/C_in (FA_411)                               0.00       0.14 f
+  DADDA/FA_85/U1/ZN (XNOR2_X1)                            0.06       0.20 f
+  DADDA/FA_85/U2/ZN (XNOR2_X1)                            0.06       0.26 f
+  DADDA/FA_85/S (FA_411)                                  0.00       0.26 f
+  DADDA/FA_190/B (FA_310)                                 0.00       0.26 f
+  DADDA/FA_190/U4/Z (XOR2_X1)                             0.07       0.34 f
+  DADDA/FA_190/U6/ZN (NAND2_X1)                           0.03       0.37 r
+  DADDA/FA_190/U7/ZN (NAND2_X1)                           0.04       0.40 f
+  DADDA/FA_190/C_out (FA_310)                             0.00       0.40 f
+  DADDA/FA_295/B (FA_208)                                 0.00       0.40 f
+  DADDA/FA_295/U3/ZN (NOR2_X1)                            0.04       0.45 r
+  DADDA/FA_295/U2/ZN (OAI21_X1)                           0.04       0.48 f
+  DADDA/FA_295/C_out (FA_208)                             0.00       0.48 f
+  DADDA/FA_386/C_in (FA_119)                              0.00       0.48 f
+  DADDA/FA_386/U7/S (FA_X1)                               0.15       0.63 r
+  DADDA/FA_386/S (FA_119)                                 0.00       0.63 r
+  DADDA/FA_444/C_in (FA_62)                               0.00       0.63 r
+  DADDA/FA_444/U4/ZN (OAI21_X1)                           0.03       0.66 f
+  DADDA/FA_444/U5/ZN (NAND2_X1)                           0.03       0.70 r
+  DADDA/FA_444/C_out (FA_62)                              0.00       0.70 r
+  DADDA/FA_488/B (FA_19)                                  0.00       0.70 r
+  DADDA/FA_488/U9/ZN (XNOR2_X1)                           0.06       0.76 r
+  DADDA/FA_488/U3/Z (XOR2_X1)                             0.08       0.84 r
+  DADDA/FA_488/S (FA_19)                                  0.00       0.84 r
+  DADDA/add_1162/B[26] (DADDA_24_DW01_add_0)              0.00       0.84 r
+  DADDA/add_1162/U542/ZN (NOR2_X1)                        0.03       0.87 f
+  DADDA/add_1162/U541/ZN (NOR2_X1)                        0.07       0.95 r
+  DADDA/add_1162/U327/ZN (AOI21_X1)                       0.05       0.99 f
+  DADDA/add_1162/U567/ZN (OAI21_X1)                       0.04       1.04 r
+  DADDA/add_1162/U570/ZN (AOI21_X1)                       0.03       1.07 f
+  DADDA/add_1162/U526/ZN (XNOR2_X1)                       0.06       1.13 f
+  DADDA/add_1162/SUM[29] (DADDA_24_DW01_add_0)            0.00       1.13 f
+  DADDA/PROD[30] (DADDA_24)                               0.00       1.13 f
+  ROUND/I[30] (ROUNDING_AND_OVF_UNIT_24_0)                0.00       1.13 f
+  ROUND/RSH0/I[30] (RSH_NORMALIZER_N48)                   0.00       1.13 f
+  ROUND/RSH0/U5/Z (MUX2_X1)                               0.07       1.19 f
+  ROUND/RSH0/O[29] (RSH_NORMALIZER_N48)                   0.00       1.19 f
+  ROUND/O[6] (ROUNDING_AND_OVF_UNIT_24_0)                 0.00       1.19 f
+  U90/ZN (AND2_X1)                                        0.04       1.23 f
+  O[6] (out)                                              0.02       1.26 f
+  data arrival time                                                  1.26
 
   max_delay                                               0.00       0.00
   output external delay                                   0.00       0.00
   data required time                                                 0.00
   --------------------------------------------------------------------------
   data required time                                                 0.00
-  data arrival time                                                 -1.56
+  data arrival time                                                 -1.26
   --------------------------------------------------------------------------
-  slack (VIOLATED)                                                  -1.56
+  slack (VIOLATED)                                                  -1.26
 
 
 1

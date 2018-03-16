@@ -14,14 +14,14 @@ Presto compilation completed successfully.
 Information: Building the design 'DADDA_24'. (HDL-193)
 Presto compilation completed successfully.
 Information: Building the design 'ROUNDING_AND_OVF_UNIT' instantiated from design 'FP32_MUL' with
-	the parameters "N=24,mode=1'h1". (HDL-193)
+	the parameters "N=24,mode=1'h0". (HDL-193)
 Warning:  ./rounding_and_ovf_unit.vhd:57: the direction (to or downto) does not agree with the values first and last in the range.  (ELAB-935)
 Presto compilation completed successfully.
 Information: Building the design 'HA'. (HDL-193)
 Presto compilation completed successfully.
 Information: Building the design 'FA'. (HDL-193)
 Presto compilation completed successfully.
-Information: Building the design 'RSH_NORMALIZER' instantiated from design 'ROUNDING_AND_OVF_UNIT_24_1' with
+Information: Building the design 'RSH_NORMALIZER' instantiated from design 'ROUNDING_AND_OVF_UNIT_24_0' with
 	the parameters "N=48". (HDL-193)
 Presto compilation completed successfully.
 1

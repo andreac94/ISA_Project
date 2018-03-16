@@ -65,13 +65,11 @@ architecture structural of FP32_MUL is
 
 begin
 	
-	nan_input <= (and_reduce(exp_A) and or_reduce(mant_A(22 downto 0))) or (and_reduce(exp_B) and or_reduce(mant_B(22 downto 0)));
-	NaN       <= nan_input;
+	nan_input  <= (and_reduce(exp_A) and or_reduce(mant_A(22 downto 0))) or (and_reduce(exp_B) and or_reduce(mant_B(22 downto 0)));
+	zero_input <= (nor_reduce(exp_A) and nor_reduce(mant_A(22 downto 0))) or (nor_reduce(exp_B) and nor_reduce(mant_B(22 downto 0)));	
+	inf_input  <= (and_reduce(exp_A) and nor_reduce(mant_A(22 downto 0))) or (and_reduce(exp_B) and nor_reduce(mant_B(22 downto 0)));
 	
-	zero_input <= (nor_reduce(exp_A) and nor_reduce(mant_A(22 downto 0))) or (nor_reduce(exp_B) and nor_reduce(mant_B(22 downto 0)));
-	
-	inf_input <= (and_reduce(exp_A) and nor_reduce(mant_A(22 downto 0))) or (and_reduce(exp_B) and nor_reduce(mant_B(22 downto 0)));
-	
+	NaN       <= nan_input or (zero_input and inf_input);
 	------------------------------------- SIGN
 	sign_A <= A(31);
 	sign_B <= B(31);
@@ -86,9 +84,12 @@ begin
 	
 	inf_result <= and_reduce(exp_out);
 	
-	process (exp_A, exp_B, exp_out, zero_input, nan_input) is begin
+	process (exp_A, exp_B, exp_out, zero_input, nan_input, inf_input) is begin
 	
-		if (zero_input = '1' and nan_input = '0') then
+		if (nan_input = '1' or (zero_input = '1' and inf_input = '1')) then
+			exp_O <= (others => '1');
+			
+		elsif (nan_input = '0' and zero_input = '1' and inf_input = '0') then
 			exp_O <= (others => '0');
 			
 		else
@@ -104,7 +105,7 @@ begin
 	mant_B <= '1' & B(22 downto 0);
 	
 	DADDA: DADDA_24                                       port map (mant_A, mant_B, prod);
-	ROUND: ROUNDING_AND_OVF_UNIT generic map (23+1, true) port map (prod, rounded, rsh);
+	ROUND: ROUNDING_AND_OVF_UNIT generic map (23+1, false) port map (prod, rounded, rsh);
 	
 	process (rounded, nan_input, inf_input, inf_result, zero_input) is begin
 	
