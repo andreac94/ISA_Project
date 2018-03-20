@@ -1,0 +1,9 @@
+The file check.py now contains the sum, add and div behaviour check.
+  It works taking as inputs a file containing the 32bits binary A and B
+    (sim_inputs), along with the simulated output (sim_output).
+  It writes the result in the file result.
+
+The file rand32.py simply generates N random 32 bits.
+  It works as here:
+    python rand32.py *insert wanted quantity of random numbers*
+  If the wanted quantity isn't specfied, the default is 200.

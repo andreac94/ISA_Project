@@ -1,0 +1,49 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity DADDA_%d_TB is
+end DADDA_%d_TB;
+
+architecture sim of DADDA_%d_TB is
+
+	component DADDA_%d
+		port (M1, M2 : in  std_logic_vector(%d downto 0);
+		      PROD   : out std_logic_vector(%d downto 0)
+		);
+	end component;
+
+	signal test_m1   : std_logic_vector(%d downto 0);
+	signal test_m2   : std_logic_vector(%d downto 0);
+	signal test_prod : std_logic_vector(%d downto 0);
+	signal dut_ok    : boolean;
+
+begin
+
+	DUT: DADDA_%d port map(test_m1, test_m2, test_prod);
+
+	-- Test for assert
+	dut_ok <= to_integer(unsigned(test_m1) * to_integer(unsigned(test_m2))) = to_integer(unsigned(test_prod));
+
+	stimulus: process is
+		variable v_a : integer;
+		variable v_b : integer;
+	begin
+
+		for v_a in 0 to %d loop
+			for v_b in 0 to %d loop
+
+				test_m1   <= std_logic_vector(to_unsigned(v_a, test_m1'length));
+				test_m2   <= std_logic_vector(to_unsigned(v_b, test_m1'length));
+				
+				wait for 10 ns;
+				assert dut_ok report "DUT FAILURE" severity ERROR;
+
+			end loop;
+		end loop;
+		
+		wait;
+
+	end process;
+
+end architecture;
