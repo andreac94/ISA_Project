@@ -2,6 +2,7 @@
 
 import random
 import struct
+import argparse
 
 def binary_to_float(x):
     """
@@ -25,14 +26,31 @@ def float_to_binary(x):
     """
     return format(struct.unpack("I",struct.pack("f",x))[0], "032b")
 
+# Option management
+parser = argparse.ArgumentParser()
+parser.add_argument("--neg", metavar='N', type=int, default=0, help="include N operations with at least 1 negative number")
+parser.add_argument("--zero", metavar='N', type=int, default=0, help="include N operations yielding zero")
+parser.add_argument("--inf", metavar='N', type=int, default=0, help="include N operations yielding inf")
+parser.add_argument("--tot", metavar='N', type=int, default=10, help="perform N operations")
+parser.add_argument("--file_A", default="stimuli_A.txt", help="file in which A operands will be stored")
+parser.add_argument("--file_B", default="stimuli_B.txt", help="file in which B operands will be stored")
+parser.add_argument("--file_S", default="results_S_py.txt", help="file in which sum results will be stored")
+parser.add_argument("--file_D", default="results_D_py.txt", help="file in which difference results will be stored")
+options = parser.parse_args()
+
+# Check sanity
+rest = options.tot - (options.neg+options.zero+options.inf)
+if rest < 0:
+    raise ValueError("Upper bound on operations too small for specified options")
+
 # Open files
-file_A = open("stimuli_A.txt", 'w')
-file_B = open("stimuli_B.txt", 'w')
-file_S = open("results_S_py.txt", 'w')
-file_D = open("results_D_py.txt", 'w')
+file_A = open(options.file_A, 'w')
+file_B = open(options.file_B, 'w')
+file_S = open(options.file_S, 'w')
+file_D = open(options.file_D, 'w')
 
 # Generate required number of test vectors with negative operands
-for i in range(0, 10):
+for i in range(0, options.neg):
     A = ""
     B = ""
     case = random.randint(0, 2)
@@ -62,7 +80,7 @@ for i in range(0, 10):
     file_D.write(D+"\n")
     
 # Generate required number of test vectors that add/sub to zero
-for i in range(0, 10):
+for i in range(0, options.zero):
     A = ""
     B = ""
     case = random.getrandbits(1)
@@ -89,7 +107,7 @@ for i in range(0, 10):
     file_D.write(D+"\n")
 
 # Generate required number of test vectors including inf
-for i in range(0, 10):
+for i in range(0, options.inf):
     A = ""
     B = ""
     case = random.getrandbits(2)
@@ -120,7 +138,7 @@ for i in range(0, 10):
     file_D.write(D+"\n")
 
 # Generate the rest of the test vectors
-for i in range(0, 10):
+for i in range(0, rest):
     A = "0"
     B = "0"
     A += format(random.getrandbits(31), "031b")

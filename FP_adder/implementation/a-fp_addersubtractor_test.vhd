@@ -59,10 +59,6 @@ begin
         file_open(input_file_B, "stimuli_B.txt",  read_mode);
         file_open(output_file_S, "results_sim_S.txt", write_mode);
         file_open(output_file_D, "results_sim_D.txt", write_mode);
-        -- do 3-2 just to see
-        A   <=  "01000000010000000000000000000000";
-        B   <=  "01000000000000000000000000000000";
-        sub <=  '1';
         wait for 10 ns;
         report "starting loop";
         while not endfile(input_file_A) loop
@@ -78,16 +74,19 @@ begin
             A   <=  vec_A;
             B   <=  vec_B;
             sub <=  '0';
+            -- wait to get stable result from simulation
+            wait for 5 ns;
             -- write result of sum
             write(vec_line, S);
             writeline(output_file_S, vec_line);
-            wait for 10 ns;
+            wait for 5 ns;
             -- do sub
             sub <=  '1';
+            wait for 5 ns;
             -- write result of sub
             write(vec_line, S);
             writeline(output_file_D, vec_line);
-            wait for 10 ns;
+            wait for 5 ns;
         end loop;
         wait;
     end process main;

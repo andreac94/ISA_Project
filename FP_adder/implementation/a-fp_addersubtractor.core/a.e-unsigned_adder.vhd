@@ -47,7 +47,7 @@ begin
 end architecture behavioural;
 
 
--- RCA adder/subtractor
+RCA adder/subtractor
 architecture RCA of unsigned_adder is
 
     component FullAdder is

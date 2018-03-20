@@ -365,10 +365,10 @@ begin
 
 end architecture structural_single;
 
-configuration cfg_fpas of FP_AdderSubtractor is
-    for structural_single
-        for UA: unsigned_adder
-            use configuration work.cfg_ua;
-        end for;
-    end for;
-end configuration cfg_fpas;
+-- configuration cfg_fpas of FP_AdderSubtractor is
+--     for structural_single
+--         for UA: unsigned_adder
+--             use configuration work.cfg_ua;
+--         end for;
+--     end for;
+-- end configuration cfg_fpas;
