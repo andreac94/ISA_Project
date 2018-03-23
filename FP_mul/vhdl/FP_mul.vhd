@@ -3,15 +3,15 @@ use ieee.std_logic_1164.all;
 use ieee.std_logic_misc.all;
 use ieee.numeric_std.all;
 
-entity FP32_MUL is
+entity FP_mul is
 	port (
 		A, B : in  std_logic_vector(31 downto 0);
 		O    : out std_logic_vector(31 downto 0);
 		NaN  : out std_logic
 	);
-end FP32_MUL;
+end FP_mul;
 
-architecture structural of FP32_MUL is
+architecture structural of FP_mul is
 
 	component EXP_MANAGER_UNIT
 		generic (N : natural);
@@ -112,7 +112,7 @@ begin
 		if (nan_input or (inf_input and zero_input)) = '1' then
 			mant_O <= (0 => '1', others => '0');
 	
-		elsif (nan_input = '0' and inf_result = '1') then
+		elsif ((nan_input = '0' and inf_result = '1') or zero_input = '1') then
 			mant_O <= (others => '0');
 			
 		else

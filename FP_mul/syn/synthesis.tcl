@@ -15,10 +15,10 @@ analyze -library $LIBRARY -format vhdl "./dadda24.vhd"
 analyze -library $LIBRARY -format vhdl "./exp_manager_unit.vhd"
 analyze -library $LIBRARY -format vhdl "./rsh_normalizer.vhd"
 analyze -library $LIBRARY -format vhdl "./rounding_and_ovf_unit.vhd"
-analyze -library $LIBRARY -format vhdl "./fp32_mul.vhd"
+analyze -library $LIBRARY -format vhdl "./FP_mul.vhd"
 
 ### ELABORATE
-set top_level "FP32_MUL"
+set top_level "FP_mul"
 elaborate $top_level -arch structural -lib $LIBRARY > "$REPORTS/elaborate.txt"
 
 ### CONSTRAINTS

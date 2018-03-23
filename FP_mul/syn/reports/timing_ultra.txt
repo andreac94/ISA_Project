@@ -4,49 +4,49 @@ Report : timing
         -path full
         -delay max
         -max_paths 1
-Design : FP32_MUL
+Design : FP_mul
 Version: Z-2007.03-SP1
-Date   : Fri Mar 16 20:34:10 2018
+Date   : Fri Mar 23 13:03:12 2018
 ****************************************
 
 Operating Conditions: typical   Library: NangateOpenCellLibrary
 Wire Load Model Mode: top
 
-  Startpoint: A[11] (input port)
+  Startpoint: B[18] (input port)
   Endpoint: O[8] (output port)
   Path Group: default
   Path Type: max
 
   Des/Clust/Port     Wire Load Model       Library
   ------------------------------------------------
-  FP32_MUL           5K_hvratio_1_1        NangateOpenCellLibrary
+  FP_mul             5K_hvratio_1_1        NangateOpenCellLibrary
 
   Point                                    Incr       Path
   -----------------------------------------------------------
-  input external delay                     0.00       0.00 r
-  A[11] (in)                               0.00       0.00 r
-  U1965/ZN (NAND2_X1)                      0.05       0.05 f
-  U1968/ZN (AND2_X1)                       0.05       0.10 f
-  U2784/ZN (AOI21_X1)                      0.05       0.15 r
-  U2785/ZN (XNOR2_X1)                      0.06       0.21 r
-  U1970/ZN (XNOR2_X1)                      0.06       0.28 r
-  U1971/ZN (XNOR2_X1)                      0.07       0.35 r
-  U1973/ZN (XNOR2_X1)                      0.06       0.41 r
-  U2027/ZN (OAI22_X1)                      0.04       0.45 f
-  U2029/ZN (XNOR2_X1)                      0.06       0.51 f
-  U2030/ZN (XNOR2_X1)                      0.06       0.57 f
-  U2031/ZN (XNOR2_X1)                      0.06       0.63 f
-  U1975/ZN (XNOR2_X1)                      0.07       0.69 f
-  U1977/ZN (NOR2_X1)                       0.04       0.74 r
-  U2038/ZN (OAI21_X1)                      0.03       0.77 f
-  U1979/ZN (AOI21_X1)                      0.06       0.83 r
-  U1980/ZN (OAI21_X1)                      0.04       0.87 f
-  U2150/ZN (AOI21_X1)                      0.05       0.92 r
-  U2152/ZN (OAI21_X1)                      0.05       0.97 f
-  U2154/ZN (AOI21_X1)                      0.05       1.02 r
-  U2241/ZN (XNOR2_X1)                      0.06       1.07 r
-  U2157/ZN (AND2_X1)                       0.05       1.12 r
-  O[8] (out)                               0.02       1.14 r
+  input external delay                     0.00       0.00 f
+  B[18] (in)                               0.00       0.00 f
+  U2977/ZN (NOR2_X1)                       0.06       0.06 r
+  U2663/Z (BUF_X2)                         0.05       0.11 r
+  U2445/ZN (NOR2_X1)                       0.03       0.14 f
+  U2912/ZN (NAND3_X1)                      0.04       0.18 r
+  U2578/Z (XOR2_X1)                        0.08       0.26 r
+  U3103/ZN (AOI22_X1)                      0.05       0.32 f
+  U2573/ZN (OR2_X1)                        0.07       0.39 f
+  U2931/ZN (AOI22_X1)                      0.05       0.44 r
+  U2941/Z (XOR2_X1)                        0.07       0.51 r
+  U2933/ZN (XNOR2_X1)                      0.06       0.57 r
+  U2934/ZN (XNOR2_X1)                      0.06       0.63 r
+  U2936/ZN (XNOR2_X1)                      0.07       0.70 r
+  U2937/ZN (AND2_X1)                       0.06       0.76 r
+  U2642/ZN (OAI22_X1)                      0.04       0.80 f
+  U2001/ZN (NAND2_X1)                      0.04       0.84 r
+  U2004/ZN (OAI21_X1)                      0.04       0.88 f
+  U2008/ZN (AOI21_X1)                      0.05       0.93 r
+  U2096/ZN (OAI21_X1)                      0.04       0.97 f
+  U2118/ZN (AOI21_X1)                      0.06       1.03 r
+  U2119/ZN (XNOR2_X1)                      0.06       1.09 r
+  U2098/ZN (NOR2_X1)                       0.03       1.11 f
+  O[8] (out)                               0.02       1.14 f
   data arrival time                                   1.14
 
   max_delay                                0.00       0.00

@@ -5,15 +5,15 @@ Loading db file '/software/synopsys/syn_current/libraries/syn/standard.sldb'
 Running PRESTO HDLC
 Presto compilation completed successfully.
 Elaborated 1 design.
-Current design is now 'FP32_MUL'.
-Information: Building the design 'EXP_MANAGER_UNIT' instantiated from design 'FP32_MUL' with
+Current design is now 'FP_mul'.
+Information: Building the design 'EXP_MANAGER_UNIT' instantiated from design 'FP_mul' with
 	the parameters "N=8". (HDL-193)
 Warning:  ./exp_manager_unit.vhd:26: the direction (to or downto) does not agree with the values first and last in the range.  (ELAB-935)
 Warning:  ./exp_manager_unit.vhd:26: the direction (to or downto) does not agree with the values first and last in the range.  (ELAB-935)
 Presto compilation completed successfully.
 Information: Building the design 'DADDA_24'. (HDL-193)
 Presto compilation completed successfully.
-Information: Building the design 'ROUNDING_AND_OVF_UNIT' instantiated from design 'FP32_MUL' with
+Information: Building the design 'ROUNDING_AND_OVF_UNIT' instantiated from design 'FP_mul' with
 	the parameters "N=24,mode=1'h0". (HDL-193)
 Warning:  ./rounding_and_ovf_unit.vhd:57: the direction (to or downto) does not agree with the values first and last in the range.  (ELAB-935)
 Presto compilation completed successfully.
