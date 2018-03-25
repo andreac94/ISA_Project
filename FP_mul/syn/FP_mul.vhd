@@ -112,7 +112,7 @@ begin
 		if (nan_input or (inf_input and zero_input)) = '1' then
 			mant_O <= (0 => '1', others => '0');
 	
-		elsif ((nan_input = '0' and inf_result = '1') or zero_input = '1') then
+		elsif (nan_input = '0' and inf_result = '1') then
 			mant_O <= (others => '0');
 			
 		else
