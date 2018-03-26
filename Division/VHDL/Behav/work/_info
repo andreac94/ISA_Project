@@ -9,7 +9,7 @@ z2
 cModel Technology
 dC:/modeltech64_10.5/examples
 Ed_selector
-Z0 w1521295762
+Z0 w1521628761
 Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
 Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
@@ -22,9 +22,9 @@ VL`TaiA7k2;hg]HE^T]fQ>0
 !s100 GcOQ`?1>I[KIf2c84N_OT3
 Z7 OL;C;10.5;63
 32
-Z8 !s110 1521477001
+Z8 !s110 1521630784
 !i10b 1
-Z9 !s108 1521477001.000000
+Z9 !s108 1521630784.000000
 Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Behav/Denominator_sel.vhd|
 Z11 !s107 C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Behav/Denominator_sel.vhd|
 !i113 0
@@ -35,13 +35,13 @@ R1
 R2
 R3
 DEx4 work 10 d_selector 0 22 L`TaiA7k2;hg]HE^T]fQ>0
+l18
+L12
+VT_8?@;G4O@g<4GCjRWl592
+!s100 B[oV@BfoKUBfHW:<>3[E40
+R7
 32
 R8
-l17
-L12
-V[NHba1@?>4z9PYHckDR2_2
-!s100 Q5E[A[[0bMT;6GAkeCBP>2
-R7
 !i10b 1
 R9
 R10
@@ -50,7 +50,7 @@ R11
 R12
 R13
 Ediv_b
-Z14 w1521292603
+Z14 w1521629669
 Z15 DPx4 work 10 div_config 0 22 dlBeC]JAR[9Vi3D:RJoOc1
 R1
 R2
@@ -60,8 +60,8 @@ Z16 8C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Projec
 Z17 FC:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Behav/a-div-behav.vhd
 l0
 L6
-V[_W[2mPeXo_WH@6N=[]N21
-!s100 UVlmNDBXBdZGN]>0g?i]I1
+V_VVD8R;OT:f53U:F=9<281
+!s100 B1Gk6j^zNRo8:g@6?[fM[0
 R7
 32
 R8
@@ -77,14 +77,14 @@ R15
 R1
 R2
 R3
-DEx4 work 5 div_b 0 22 [_W[2mPeXo_WH@6N=[]N21
+DEx4 work 5 div_b 0 22 _VVD8R;OT:f53U:F=9<281
+l32
+L14
+V`bJU7<zfHV9X@KUk]l[oN1
+!s100 MQMM15N4HJ4^bD6PWM@NR1
+R7
 32
 R8
-l31
-L13
-Vm6g?f;Q?QUa0F4B]@Ajdb1
-!s100 b9<8X@ZX9dm9Gi7A=?aMU2
-R7
 !i10b 1
 R9
 R18
@@ -93,55 +93,52 @@ R19
 R12
 R13
 Ediv_behav_testbench
-Z20 w1521477142
+Z20 w1521630126
 Z21 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
 R1
 R2
 R3
 R4
-8test_behav.vhd
-Ftest_behav.vhd
+Z22 8C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Behav/test_behav.vhd
+Z23 FC:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Behav/test_behav.vhd
 l0
 L9
-VX>SiML<OOmD`h>^QXHf423
+V2^3SWN^l:V:oh8Q1EnkF91
 !s100 A7alUbDJjlL^@To6BASBl3
 R7
 32
-!s110 1521477160
+R8
 !i10b 1
-!s108 1521477160.000000
-!s90 -reportprogress|300|test_behav.vhd|
-!s107 test_behav.vhd|
+R9
+Z24 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Behav/test_behav.vhd|
+Z25 !s107 C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Behav/test_behav.vhd|
 !i113 0
+R12
 R13
 Atb
 R21
 R1
 R2
 R3
-DEx4 work 19 div_behav_testbench 0 22 2^3SWN^l:V:oh8Q1EnkF91
-32
-R8
+Z26 DEx4 work 19 div_behav_testbench 0 22 2^3SWN^l:V:oh8Q1EnkF91
 l33
 L12
-VU<`KDK@i1bUILB4=N85a20
-!s100 EbDJ8gFFRaLX>gGYj:A;?1
+Z27 Vz8cUXEkF[3jO_e2N4^jBn3
+Z28 !s100 jXiBD1H@EVTK8G8m=MGnK0
 R7
+32
+R8
 !i10b 1
 R9
-!s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Behav/test_behav.vhd|
-!s107 C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Behav/test_behav.vhd|
+R24
+R25
 !i113 0
 R12
 R13
-FC:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Behav/test_behav.vhd
-8C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Behav/test_behav.vhd
 Pdiv_config
 R2
 R3
-32
-R8
-w1521201283
+w1521628078
 R4
 8C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Behav/00-globals.vhd
 FC:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Behav/00-globals.vhd
@@ -150,8 +147,10 @@ L4
 VdlBeC]JAR[9Vi3D:RJoOc1
 !s100 8Xdkd@VLY@UTgB>_nbJdX1
 R7
+32
+!s110 1521630783
 !i10b 1
-R9
+!s108 1521630783.000000
 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Behav/00-globals.vhd|
 !s107 C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Behav/00-globals.vhd|
 !i113 0
