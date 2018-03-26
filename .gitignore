@@ -1,5 +1,6 @@
 # Exclude the pdf files since the polito server has limited space 
 *.pdf
+*.xml
 # Exclude the ppt files since the polito server has limited space 
 *.ppt
 *.pptx
