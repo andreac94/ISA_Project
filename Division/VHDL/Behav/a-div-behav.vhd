@@ -6,6 +6,7 @@ use work.div_config.all;
 entity div_b is
   port (
     A, B : in  std_logic_vector (22 downto 0);
+    P, N : out std_logic_vector (27 downto 0);
     R, Q : out std_logic_vector (27 downto 0));
 end entity; -- div_b
 
@@ -21,7 +22,7 @@ architecture behav of div_b is
   end component; -- D_selector
 
   --signals
-  signal N   : std_logic_vector (29 downto 0) := (others => '0');
+  signal Num : std_logic_vector (29 downto 0) := (others => '0');
   signal D   : matrix_30bit (13 downto 0);
   signal fR  : matrix_30bit (13 downto 0);
   signal nR  : matrix_30bit (14 downto 0);
@@ -31,10 +32,10 @@ architecture behav of div_b is
 begin
 
   -- CREATE operating signals
-  N(24) <= '1';
-  N(23 downto  1) <= A;
+  Num(24) <= '1';
+  Num(23 downto  1) <= A;
 
-  nR(0) <= N;
+  nR(0) <= Num;
 
   -- START computation
   Gen_comp : for i in 0 to 13 generate
@@ -52,6 +53,8 @@ begin
 
   -- Assign Results
   R <= nR (14)(27 downto 0);
+  P <= Pos_q;
+  N <= Neg_q;
   Q <= std_logic_vector(signed(Pos_q) - signed(Neg_q));
 
 end architecture; -- behav

@@ -25,7 +25,8 @@ with open('inputs_a', 'r') as i, open('results.txt', 'r') as f, open('comparison
         B_dec = float(int(sim_B_bin_fraction, 2)) / 2**23
 
         # Operation Result
-        sim_result_bin = f.readline()
+        sim_result_bin  = f.readline()
+        sim_remaind_bin = f.readline()
         sim_result_dec = float(int(sim_result_bin, 2)) / 2**26
 
         result_dec = A_dec / B_dec
@@ -35,15 +36,15 @@ with open('inputs_a', 'r') as i, open('results.txt', 'r') as f, open('comparison
         result_bin = temp_result_bin.zfill(28)
 
         # Compare the simulated result with the expected one
-        if (result_bin[2:25] == sim_result_bin.rstrip()[2:25]):
+        if (result_bin == sim_result_bin.rstrip()):
             validation = 'ok'
         else:
             validation = 'NO'
 
         # Write the output file
         o.write(
- '{:5s}{:35s}{:<15.2E}{:<35s}{:<35s}\n{:5s}{:35s}{:<15.2E}{:<35.2E}{:<35.2E}\n\n'.format('div',
-     sim_result_bin.rstrip()[2:25], sim_result_dec, sim_A_bin_fraction.rstrip(),
-     sim_B_bin_fraction.rstrip(), validation, result_bin[2:25], result_dec,
-     A_dec, B_dec))
+                '{:5s}{:35s}{:<15.2E}{:<35s}{:<35s}\n{:5s}{:35s}{:<15.2E}{:<35.2E}{:<35.2E}\n{:5s}{:35s}\n\n'.format('div',
+     sim_result_bin.rstrip(), sim_result_dec, sim_A_bin_fraction.rstrip(),
+     sim_B_bin_fraction.rstrip(), validation, result_bin, result_dec,
+     A_dec, B_dec, '', sim_remaind_bin.rstrip()))
 

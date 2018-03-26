@@ -8,20 +8,21 @@ Model Technology ModelSim SE-64 vcom 10.5 Compiler 2016.02 Feb 13 2016
 -- Compiling entity div_b
 -- Compiling architecture behav of div_b
 
+} {} {}} {C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Behav/test_behav.vhd} {1 {vcom -work work -2002 -explicit -vopt -stats=none {C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Behav/test_behav.vhd}
+Model Technology ModelSim SE-64 vcom 10.5 Compiler 2016.02 Feb 13 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_textio
+-- Compiling entity div_behav_TestBench
+-- Compiling architecture tb of div_behav_TestBench
+
 } {} {}} {C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Behav/00-globals.vhd} {1 {vcom -work work -2002 -explicit -vopt -stats=none {C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Behav/00-globals.vhd}
 Model Technology ModelSim SE-64 vcom 10.5 Compiler 2016.02 Feb 13 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Compiling package div_config
-
-} {} {}} {C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Behav/Denominator_sel.vhd} {1 {vcom -work work -2002 -explicit -vopt -stats=none {C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Behav/Denominator_sel.vhd}
-Model Technology ModelSim SE-64 vcom 10.5 Compiler 2016.02 Feb 13 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity D_selector
--- Compiling architecture behav of D_selector
 
 } {} {}}

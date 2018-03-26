@@ -1,0 +1,240 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Radix-2
+Ed_selector
+Z1 w1521636416
+Z2 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z5 8C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Radix-2/Denominator_sel.vhd
+Z6 FC:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Radix-2/Denominator_sel.vhd
+l0
+L5
+VLX15ZC?z;l8Z?eLm?L3cK2
+!s100 >c`cb3BESN6?QUVTigQ0N3
+Z7 OL;C;10.5;63
+32
+Z8 !s110 1521993023
+!i10b 1
+Z9 !s108 1521993023.000000
+Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Radix-2/Denominator_sel.vhd|
+Z11 !s107 C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Radix-2/Denominator_sel.vhd|
+!i113 0
+Z12 o-work work -2002 -explicit
+Z13 tExplicit 1 CvgOpt 0
+Abehav
+R2
+R3
+R4
+DEx4 work 10 d_selector 0 22 LX15ZC?z;l8Z?eLm?L3cK2
+32
+R8
+l18
+L12
+VUN_>>WFCi__Ai]Q?`7@a53
+!s100 O7YIeL@`Zgk<@T[VEU0cE2
+R7
+!i10b 1
+R9
+R10
+R11
+!i113 0
+R12
+R13
+Ediv_b
+Z14 w1521646828
+Z15 DPx4 work 10 div_config 0 22 FV@dhG2Z6jW71bRObZ7Df3
+R2
+R3
+R4
+R0
+Z16 8C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Radix-2/a-div-behav.vhd
+Z17 FC:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Radix-2/a-div-behav.vhd
+l0
+L6
+V^[]?9MB0959zJdkYClGm@1
+!s100 k_Bg4fRNgzgK7l2gHOYPJ0
+R7
+32
+R8
+!i10b 1
+R9
+Z18 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Radix-2/a-div-behav.vhd|
+Z19 !s107 C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Radix-2/a-div-behav.vhd|
+!i113 0
+R12
+R13
+Abehav
+R15
+R2
+R3
+R4
+DEx4 work 5 div_b 0 22 ^[]?9MB0959zJdkYClGm@1
+32
+R8
+l31
+L12
+VLPZPiG>;LK70neS;;35zM1
+!s100 `b9a_87n19F`b9@zWK@iS3
+R7
+!i10b 1
+R9
+R18
+R19
+!i113 0
+R12
+R13
+Ediv_behav_testbench
+Z20 w1521646917
+Z21 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
+R2
+R3
+R4
+R0
+Z22 8C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Radix-2/test_behav.vhd
+Z23 FC:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Radix-2/test_behav.vhd
+l0
+L9
+V2^3SWN^l:V:oh8Q1EnkF91
+!s100 A7alUbDJjlL^@To6BASBl3
+R7
+32
+R8
+!i10b 1
+R9
+Z24 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Radix-2/test_behav.vhd|
+Z25 !s107 C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Radix-2/test_behav.vhd|
+!i113 0
+R12
+R13
+Atb
+R21
+R2
+R3
+R4
+DEx4 work 19 div_behav_testbench 0 22 2^3SWN^l:V:oh8Q1EnkF91
+l30
+L12
+V7kmGFSMRNOlASXA[a[XkQ0
+!s100 jH;cMG86aUf8?a;l2532Z0
+R7
+32
+R8
+!i10b 1
+R9
+R24
+R25
+!i113 0
+R12
+R13
+Pdiv_config
+R3
+R4
+32
+R8
+w1521636964
+R0
+8C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Radix-2/00-globals.vhd
+FC:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Radix-2/00-globals.vhd
+l0
+L4
+VFV@dhG2Z6jW71bRObZ7Df3
+!s100 a[L4gaRfCaJKDMZA0<?kz0
+R7
+!i10b 1
+R9
+!s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Radix-2/00-globals.vhd|
+!s107 C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Radix-2/00-globals.vhd|
+!i113 0
+R12
+R13
+Efp_div
+Z26 w1521993016
+R2
+R3
+R4
+R0
+Z27 8a-FP_div.vhd
+Z28 Fa-FP_div.vhd
+l0
+L5
+VUz_SW1>o?14WoHjL@l?Wl0
+!s100 8PKZDT9NGM=iQ>2hT9@:43
+R7
+32
+Z29 !s110 1521993025
+!i10b 1
+Z30 !s108 1521993025.000000
+Z31 !s90 -reportprogress|300|a-FP_div.vhd|
+Z32 !s107 a-FP_div.vhd|
+!i113 0
+R13
+Abehav
+R2
+R3
+R4
+DEx4 work 6 fp_div 0 22 Uz_SW1>o?14WoHjL@l?Wl0
+32
+R29
+l31
+L10
+V?Zz;nPH8P:0231QVMc6VI0
+!s100 TDa=2I88A4AEl;B=KHTj<2
+R7
+!i10b 1
+R30
+R31
+R32
+!i113 0
+R13
+Efp_testbench
+Z33 w1521647074
+R21
+R2
+R3
+R4
+R0
+Z34 8C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Radix-2/tb_FP.vhd
+Z35 FC:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Radix-2/tb_FP.vhd
+l0
+L9
+VNQSBQG7VacZRZQ9hoe0;@0
+!s100 P5KXRKG3_mX29zi0gHGY^2
+R7
+32
+R8
+!i10b 1
+R9
+Z36 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Radix-2/tb_FP.vhd|
+Z37 !s107 C:/Users/4ndre/Desktop/ANNO_5/1/Integrated _Systems_Architecture/ISA_Project/Division/VHDL/Radix-2/tb_FP.vhd|
+!i113 0
+R12
+R13
+Atb
+R21
+R2
+R3
+R4
+DEx4 work 12 fp_testbench 0 22 NQSBQG7VacZRZQ9hoe0;@0
+32
+R8
+l26
+L12
+V6Tz^8RB0IGo9CYXSTUAUF2
+!s100 nJTQh5J6]2E5]3JEn^feY2
+R7
+!i10b 1
+R9
+R36
+R37
+!i113 0
+R12
+R13
