@@ -101,8 +101,8 @@ begin
 	
 	
 	------------------------------------- MANTISSA
-	mant_A <= '1' & A(22 downto 0);
-	mant_B <= '1' & B(22 downto 0);
+	mant_A <= or_reduce(exp_A) & A(22 downto 0);
+	mant_B <= or_reduce(exp_B) & B(22 downto 0);
 	
 	DADDA: DADDA_24                                       port map (mant_A, mant_B, prod);
 	ROUND: ROUNDING_AND_OVF_UNIT generic map (23+1, false) port map (prod, rounded, rsh);
